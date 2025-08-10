@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Section from '@/components/Section';
-import { profile } from '@/data/profile';
 import SafeLink from '@/components/SafeLink';
 
 export const metadata = { title: 'About — Tejjus Bhat' };

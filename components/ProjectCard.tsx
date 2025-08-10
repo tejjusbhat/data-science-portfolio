@@ -1,5 +1,3 @@
-import SafeLink from './SafeLink';
-
 export default function ProjectCard({ project }:{ project: {
   slug: string; title: string; summary: string; stack: string[]; links?: { repo?: string; demo?: string; paper?: string }
 }}){
