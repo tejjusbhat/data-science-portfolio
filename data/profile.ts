@@ -5,9 +5,9 @@ export const profile = {
   links: {
     github: 'https://github.com/tejjusbhat',
     linkedin: 'https://linkedin.com/in/tejjusbhat',
-    kaggle: 'https://kaggle.com/your-handle',
-    medium: 'https://medium.com/@your-medium-username',
-    twitter: 'https://twitter.com/your-handle',
+    kaggle: 'https://www.kaggle.com/tejjusbhat',
+    medium: 'https://medium.com/@tejjusbhat',
+    twitter: 'https://x.com/tejjusbhat',
     email: 'tejjusbhat@gmail.com'
   }
 };

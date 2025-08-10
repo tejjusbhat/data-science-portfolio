@@ -17,7 +17,7 @@ export const projects: Project[] = [
   {
     slug: 'stock-market-assistant',
     title: 'Stock Market Assistant',
-    summary: 'LLM-augmented analysis of news + historical trends; exposed as an API for quick evaluations.',
+    summary: 'LLM-augmented analysis of news + trends for ease of investment; exposed as an API for quick evaluations.',
     stack: ['Python','FastAPI','LLM','BeautifulSoup'],
     links: { repo: 'https://github.com/tejjusbhat/stock_invest_assistant' }
   },

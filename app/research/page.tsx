@@ -26,14 +26,14 @@ export default function ResearchPage(){
         ))}</ul>}
       </Section>
 
-      <Section title="Certificates">
+      {/* <Section title="Certificates">
         {research.certificates.length===0 ? <p className="lead">Add notable certifications.</p> :
         <ul>{research.certificates.map((c,i)=>(
           <li key={i} className="card" style={{marginBottom:12}}>
             <strong>{c.title}</strong> — {c.issuer} ({c.year})
           </li>
         ))}</ul>}
-      </Section>
+      </Section> */}
     </>
   );
 }

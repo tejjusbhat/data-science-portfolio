@@ -1,86 +1,10 @@
-'use client';
-import { useEffect, useRef, useState } from 'react';
+import ContactForm from "./ContactForm";
 
-export default function ContactPage(){
-  const [ok, setOk] = useState<string| null>(null);
-  const [err, setErr] = useState<string| null>(null);
-  const t0 = useRef<number>(Date.now());
-  const [submitting, setSubmitting] = useState(false);
+export const metadata = {
+  title: "Contact — Tejjus Bhat",
+  description: "Get in touch with Tejjus Bhat.",
+};
 
-  useEffect(()=>{ t0.current = Date.now(); }, []);
-
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>){
-    e.preventDefault();
-    setSubmitting(true);
-    setOk(null);
-    setErr(null);
-    const fd = new FormData(e.currentTarget);
-    fd.set('elapsed', String(Date.now()-t0.current));
-    try{
-      const res = await fetch('/api/contact', { method:'POST', body: fd });
-      const j = await res.json();
-      if(!res.ok) throw new Error(j.error || 'Failed');
-      setOk('Thanks! I’ll get back to you soon.');
-      (e.target as HTMLFormElement).reset();
-    }catch(ex:any){
-      setErr(ex.message);
-    }finally{
-      setSubmitting(false);
-    }
-  }
-
-  return (
-  <div style={{maxWidth:780, margin:'0 auto'}}>
-    <h1 style={{textAlign:'center'}}>Contact</h1>
-    <p className="lead" style={{textAlign:'center'}}>This form uses a honeypot + timing check to reduce spam.</p>
-    <form onSubmit={onSubmit} className="card" style={{maxWidth:640, margin:'16px auto'}}>
-        <label>
-          Name
-          <input
-            name="name"
-            required
-            placeholder="Your name"
-            autoComplete="name"
-            inputMode="text"
-          />
-        </label><br/>
-        <label>
-          Email
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="you@example.com"
-            autoComplete="email"
-            inputMode="email"
-          />
-        </label><br/>
-        <label>
-          Message
-          <textarea
-            name="message"
-            required
-            rows={6}
-            placeholder="How can I help?"
-          />
-        </label>
-        {/* Honeypot */}
-        <input
-          name="company"
-          autoComplete="off"
-          tabIndex={-1}
-          aria-hidden="true"
-          style={{position:'absolute', left:'-5000px', opacity:0}}
-        />
-        <div style={{display:'flex', gap:12, marginTop:12, alignItems:'center', flexWrap:'wrap'}}>
-          <button className="cta" disabled={submitting}>
-            {submitting ? 'Sending…' : 'Send'}
-          </button>
-          <small className="helper">Or email: <a href="mailto:tejjusbhat@gmail.com">tejjusbhat@gmail.com</a></small>
-        </div>
-        {ok && <p role="status" style={{marginTop:12}}>{ok}</p>}
-        {err && <p role="alert" style={{marginTop:12}}>{err}</p>}
-      </form>
-    </div>
-  );
+export default function ContactPage() {
+  return <ContactForm />;
 }
