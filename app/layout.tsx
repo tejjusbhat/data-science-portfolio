@@ -7,6 +7,9 @@ export const metadata = {
     default: 'Tejjus Bhat | Data Scientist',
     template: '%s | Tejjus Bhat',
   },
+  icons: {
+    icon: '/favicon.ico',
+  },
   description: 'Portfolio of Tejjus Bhat — quick-witted data scientist for fintech and research.',
   openGraph: {
     title: 'Tejjus Bhat | Data Scientist',
