@@ -59,7 +59,7 @@ export default function AboutPage(){
           </div>
 
           <div className="btn-row" style={{marginTop:14}}>
-            <SafeLink href="https://drive.google.com/your_resume">
+            <SafeLink href="https://drive.google.com/file/d/1jFPUKQqGeqHnNjqmmhZu1CcPKUAkYIem/view?usp=drive_link">
               <span className="nav-link">Download Resume</span>
             </SafeLink>
           </div>

@@ -70,8 +70,8 @@ export default function Home() {
 
       <Section title="What I’m aiming for">
         <p className="lead">
-          Opportunities where rigorous analysis and practical ML meet product impact—especially in fintech risk, forecasting, NLP for operations,
-          or research roles with strong engineering culture.
+          Opportunities where I can apply my knowledge to solve business problems. 
+          A place where I can learn and grow with people with a positive mindset.
         </p>
       </Section>
     </>
