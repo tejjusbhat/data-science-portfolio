@@ -46,7 +46,7 @@ export default function AboutPage(){
 
           <div className="row">
             <span className="meta-key">Location</span>
-            <span>India (open to remote)</span>
+            <span>Newcastle, UK</span>
           </div>
           <div className="row">
             <span className="meta-key">Focus</span>
