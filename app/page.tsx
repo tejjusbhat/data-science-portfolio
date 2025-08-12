@@ -49,15 +49,11 @@ export default function Home() {
           
                     <div className="row">
                       <span className="meta-key">Location</span>
-                      <span>India (open to remote)</span>
+                      <span>Newcastle, UK</span>
                     </div>
                     <div className="row">
                       <span className="meta-key">Focus</span>
                       <span>Fintech • Research • ML</span>
-                    </div>
-                    <div className="row">
-                      <span className="meta-key">Stack</span>
-                      <span>Python, ML, Deep Learning, SQL, LLM, GCP</span>
                     </div>
           
                     <div className="btn-row" style={{marginTop:14}}>
