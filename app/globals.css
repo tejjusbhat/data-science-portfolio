@@ -1,19 +1,27 @@
 :root{
-  --bg: #0b1020;
-  --bg-soft:#121735;
-  --text:#e8ebf7;
-  --muted:#a6b0cf;
-  --brand:#6d5ef8;      /* violet */
-  --brand-2:#16a3ff;    /* blue accent */
-  --card:#0f1530;
-  --ring: rgba(109,94,248,.35);
-  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --bg: #060d1a;
+  --bg-soft: #0a1628;
+  --text: #e4eeff;
+  --muted: #7a99c2;
+  --brand: #3b82f6;     /* blue-500 */
+  --brand-2: #38bdf8;   /* sky-400 */
+  --card: #0d1a35;
+  --ring: rgba(59,130,246,.4);
+  --shadow: 0 10px 30px rgba(0,0,0,.5);
+  /* mouse-tracking gradient position — updated by MouseGlow.tsx */
+  --mx: 50%; --my: 30%;
 }
 @media (prefers-color-scheme: light){
   :root{
-    --bg:#ffffff; --bg-soft:#f6f7fb; --text:#0e1225; --muted:#4a5675;
-    --brand:#5a4cf0; --brand-2:#0ea5e9; --card:#ffffff; --ring: rgba(90,76,240,.25);
-    --shadow: 0 10px 30px rgba(2,6,23,.08);
+    --bg: #f0f6ff;
+    --bg-soft: #e5f0ff;
+    --text: #0b1830;
+    --muted: #4a6890;
+    --brand: #2563eb;    /* blue-600 */
+    --brand-2: #0284c7;  /* sky-600 */
+    --card: #ffffff;
+    --ring: rgba(37,99,235,.25);
+    --shadow: 0 10px 30px rgba(2,10,28,.08);
   }
 }
 *{box-sizing:border-box}
@@ -21,7 +29,10 @@ html{scroll-behavior:smooth}
 html, body { overflow-x: hidden; }
 body{
   margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial;
-  color:var(--text); background:linear-gradient(180deg,var(--bg) 0%,var(--bg-soft) 100%);
+  color:var(--text);
+  background:
+    radial-gradient(700px circle at var(--mx) var(--my), rgba(59,130,246,.09), transparent 65%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
 }
 a{color:inherit; text-decoration:none}
 img{max-width:100%; display:block}
@@ -32,7 +43,7 @@ header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.8) blur(8p
 nav, .nav-right{display:flex; gap:18px; align-items:center}
 .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
 .logo{inline-size:36px; block-size:36px; border-radius:10px; display:grid; place-items:center;
-  background:radial-gradient(120% 160% at 30% 20%, var(--brand-2), var(--brand) 55%, #6366f1 100%);
+  background:radial-gradient(120% 160% at 30% 20%, var(--brand-2), var(--brand) 55%, #1d4ed8 100%);
   box-shadow:var(--shadow)}
 .ghost{padding:10px 12px; border-radius:10px; border:1px solid color-mix(in oklab, var(--text) 15%, transparent); background:transparent}
 .cta{padding:10px 14px; border-radius:10px; background:var(--brand); color:white; font-weight:700; box-shadow:var(--shadow)}
@@ -285,8 +296,363 @@ input, textarea{
     left: 50%;
     transform: translate(-50%, -20%);
     width: 90vw;
-    height: 90vw;        /* keep it circular */
-    max-width: 520px;    /* won’t exceed desktop size */
+    height: 90vw;
+    max-width: 520px;
     max-height: 520px;
   }
+}
+
+/* === Mobile tweaks === */
+@media (max-width: 520px){
+  /* Force 2-column exp-strip even on very small screens */
+  .exp-strip{ grid-template-columns: repeat(2, 1fr); }
+  .exp-role{ font-size:.82rem; }
+  .exp-org { font-size:.76rem; }
+
+  /* Timeline: tighten on mobile */
+  .timeline{ padding-left:18px; }
+  .timeline-item{ padding:12px 0 12px 12px; }
+  .timeline-item::before{ left:-13px; width:7px; height:7px; top:18px; }
+
+  /* Skills grid: single column on very small screens */
+  .skills-grid{ grid-template-columns:1fr; }
+
+  /* Stat chips: smaller text so they don't force line breaks */
+  .stat-chip{ font-size:.76rem; padding:5px 10px; }
+}
+
+/* === Section title with gradient accent === */
+.section-title{
+  position:relative; padding-bottom:12px; margin-bottom:20px;
+}
+.section-title::after{
+  content:’’; position:absolute; bottom:0; left:0;
+  width:36px; height:3px; border-radius:2px;
+  background:linear-gradient(90deg, var(--brand), var(--brand-2));
+}
+
+/* === Stat chips (hero) === */
+.stat-chips{ display:flex; gap:10px; flex-wrap:wrap; margin:14px 0 18px; }
+.stat-chip{
+  display:inline-flex; align-items:center;
+  padding:5px 12px; border-radius:8px; font-size:.82rem; font-weight:600;
+  background:linear-gradient(135deg,
+    color-mix(in oklab, var(--brand) 15%, var(--card)),
+    color-mix(in oklab, var(--brand-2) 10%, var(--card)));
+  border:1px solid color-mix(in oklab, var(--brand) 35%, transparent);
+  color:var(--text);
+}
+
+/* === Ghost button hover === */
+.ghost{
+  transition:transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+.ghost:hover{
+  transform:translateY(-1px); box-shadow:var(--shadow);
+  background:color-mix(in oklab, var(--card) 88%, #fff 4%);
+  border-color:color-mix(in oklab, var(--text) 25%, transparent);
+}
+
+/* === Featured card (gradient top border) === */
+.card-featured{ position:relative; overflow:hidden; }
+.card-featured::before{
+  content:’’; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg, var(--brand), var(--brand-2));
+}
+
+/* === Experience strip (home page) === */
+.exp-strip{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:12px; margin-top:4px;
+}
+.exp-card{
+  padding:14px 16px; border-radius:12px; position:relative; overflow:hidden;
+  border:1px solid color-mix(in oklab, var(--text) 10%, transparent);
+  background:color-mix(in oklab, var(--card) 75%, transparent);
+  transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.exp-card::before{
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg, var(--brand), var(--brand-2));
+  opacity:.5;
+}
+.exp-card:hover{
+  transform:translateY(-1px);
+  box-shadow:0 4px 18px rgba(0,0,0,.25);
+  border-color:color-mix(in oklab, var(--brand) 30%, transparent);
+}
+.exp-role{ font-weight:700; font-size:.9rem; margin:0 0 3px; }
+.exp-org { font-size:.82rem; color:var(--muted); margin:0; }
+.exp-date{ font-size:.78rem; color:var(--muted); margin:4px 0 0; }
+
+/* === Experience timeline (about page) === */
+.timeline{
+  display:flex; flex-direction:column; position:relative; padding-left:22px;
+}
+.timeline::before{
+  content:’’; position:absolute; left:5px; top:12px; bottom:12px;
+  width:1px; background:color-mix(in oklab, var(--brand) 35%, transparent);
+}
+.timeline-item{
+  position:relative; padding:14px 0 14px 16px;
+  border-bottom:1px solid color-mix(in oklab, var(--text) 7%, transparent);
+}
+.timeline-item:last-child{ border-bottom:0; }
+.timeline-item::before{
+  content:’’; position:absolute; left:-17px; top:20px;
+  width:8px; height:8px; border-radius:50%; background:var(--brand);
+  box-shadow:0 0 0 3px color-mix(in oklab, var(--brand) 22%, transparent);
+}
+.timeline-role  { font-weight:700; font-size:1rem; margin:0 0 2px; }
+.timeline-org   { font-size:.9rem; color:var(--muted); margin:0; }
+.timeline-period{ font-size:.8rem; color:var(--muted); margin:3px 0 8px; }
+
+/* === Skills grid (about page) === */
+.skills-grid{
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(190px, 1fr)); gap:12px; margin-top:12px;
+}
+.skill-group{
+  background:color-mix(in oklab, var(--card) 80%, transparent);
+  border:1px solid color-mix(in oklab, var(--text) 9%, transparent);
+  border-radius:12px; padding:12px 14px;
+}
+.skill-group-title{
+  font-size:.75rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); margin:0 0 8px; font-weight:600;
+}
+.skill-tags{ display:flex; flex-wrap:wrap; gap:5px; }
+.skill-tag{
+  font-size:.8rem; padding:3px 8px; border-radius:6px;
+  background:color-mix(in oklab, var(--brand) 10%, var(--bg-soft));
+  border:1px solid color-mix(in oklab, var(--text) 7%, transparent);
+  color:var(--text); cursor:default;
+  transition:background .1s ease, border-color .1s ease;
+}
+.skill-tag:hover{
+  background:color-mix(in oklab, var(--brand) 20%, var(--bg-soft));
+  border-color:color-mix(in oklab, var(--brand) 22%, transparent);
+}
+
+/* === Projects group label === */
+.projects-group-label{
+  font-size:.78rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); margin:24px 0 12px; font-weight:600;
+}
+.projects-group-label:first-child{ margin-top:0; }
+
+/* =========================================================
+   STAND-OUT VISUAL ENHANCEMENTS
+   ========================================================= */
+
+/* === Waving hand animation === */
+.wave{
+  display:inline-block; transform-origin:70% 70%;
+  animation:wave-hand 2.4s ease-in-out 3;
+}
+@keyframes wave-hand{
+  0%,60%,100%{ transform:rotate(0deg); }
+  10%         { transform:rotate(14deg); }
+  20%         { transform:rotate(-8deg); }
+  30%         { transform:rotate(14deg); }
+  40%         { transform:rotate(-4deg); }
+  50%         { transform:rotate(10deg); }
+}
+
+/* === Gradient text (hero name) === */
+.gradient-text{
+  background:linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+/* === Scroll fade-in === */
+.fade-in{
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .6s ease, transform .6s ease;
+}
+.fade-in.visible{ opacity:1; transform:none; }
+
+/* === Pulsing availability badge === */
+.available-badge{ display:inline-flex; align-items:center; gap:7px; }
+.pulse-dot{
+  width:7px; height:7px; border-radius:50%; flex-shrink:0;
+  background:#10b981;
+  animation:pulse-ring 1.8s ease-out infinite;
+}
+@keyframes pulse-ring{
+  0%,100%{ box-shadow:0 0 0 0 rgba(16,185,129,.55); }
+  60%    { box-shadow:0 0 0 6px rgba(16,185,129,0); }
+}
+
+/* === Achievement rows in hero sidebar === */
+.achievement{
+  font-size:.79rem; color:var(--muted); padding:3px 0;
+  display:flex; align-items:center; gap:7px;
+}
+.achievement::before{
+  content:''; width:5px; height:5px; border-radius:50%; flex-shrink:0;
+  background:linear-gradient(135deg, var(--brand), var(--brand-2));
+}
+
+/* === Hero background dot grid === */
+.hero-wrap{ position:relative; }
+.hero-dot-bg{
+  position:absolute; inset:0; pointer-events:none;
+  background-image:radial-gradient(circle, color-mix(in oklab, var(--brand) 25%, transparent) 1.5px, transparent 1.5px);
+  background-size:26px 26px;
+  opacity:.13;
+}
+
+/* === Card hover glow (all cards) === */
+.card{
+  transition:box-shadow .18s ease, border-color .18s ease, transform .18s ease;
+}
+.card:hover{
+  box-shadow:0 0 0 1px color-mix(in oklab, var(--brand) 28%, transparent),
+             0 12px 32px rgba(0,0,0,.35);
+  border-color:color-mix(in oklab, var(--brand) 28%, transparent);
+  transform:translateY(-2px);
+}
+
+/* === Section title: make it a bit larger and bolder === */
+.section-title{
+  font-size:clamp(1.3rem, 3vw, 1.75rem);
+  font-weight:800;
+  letter-spacing:-.01em;
+}
+
+/* === Hero: make h1 even bigger and punchier === */
+.hero-wrap h1{
+  font-size:clamp(2.4rem, 6vw, 3.6rem);
+  font-weight:800;
+  letter-spacing:-.02em;
+  line-height:1.08;
+}
+
+/* === CTA button: brighter glow on hover === */
+.cta-primary:hover{
+  filter:brightness(1.08);
+  box-shadow:0 0 0 3px color-mix(in oklab, var(--brand) 35%, transparent),
+             0 14px 32px rgba(0,0,0,.4);
+}
+
+/* === Mobile: hide dot grid (too subtle to matter, saves paint) === */
+@media (max-width:600px){
+  .hero-dot-bg{ display:none; }
+}
+
+/* =========================================================
+   PROJECT CARD PREVIEW HEADER
+   ========================================================= */
+.card{ overflow:hidden; }
+.card-preview{
+  margin:-18px -18px 14px;
+  height:68px;
+  position:relative;
+  border-radius:12px 12px 0 0;
+  overflow:hidden;
+}
+.card-preview::after{
+  content:'';
+  position:absolute; inset:0;
+  background-image: radial-gradient(circle, rgba(255,255,255,.18) 1px, transparent 1px);
+  background-size:20px 20px;
+  opacity:.45;
+}
+.card-preview-badge{
+  position:absolute; bottom:8px; left:12px; z-index:1;
+  font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; font-weight:700;
+  padding:3px 9px; border-radius:999px;
+  background:rgba(0,0,0,.38); color:#fff; backdrop-filter:blur(4px);
+}
+/* Category gradients */
+.card-preview[data-cat="ml"]{
+  background:linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+}
+.card-preview[data-cat="llm"]{
+  background:linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+}
+.card-preview[data-cat="cv"]{
+  background:linear-gradient(135deg, #0891b2 0%, #10b981 100%);
+}
+.card-preview[data-cat="api"]{
+  background:linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+}
+.card-preview[data-cat="eda"]{
+  background:linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+}
+
+/* =========================================================
+   EDUCATION SECTION
+   ========================================================= */
+.edu-grid{
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:16px; margin-top:4px;
+}
+@media (max-width:720px){ .edu-grid{ grid-template-columns:1fr; } }
+
+.edu-card{
+  position:relative; overflow:hidden;
+  border-radius:14px; padding:20px;
+  background:linear-gradient(160deg, color-mix(in oklab, var(--card) 85%, #fff 5%), var(--bg-soft));
+  border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
+  box-shadow:var(--shadow);
+}
+.edu-card::before{
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg, var(--brand), var(--brand-2));
+}
+.edu-degree{
+  font-size:1rem; font-weight:700; margin:0 0 2px;
+}
+.edu-inst{
+  font-size:.88rem; color:var(--muted); margin:0 0 6px;
+}
+.edu-meta{
+  display:flex; gap:12px; flex-wrap:wrap; margin-bottom:10px;
+}
+.edu-badge{
+  font-size:.75rem; padding:3px 10px; border-radius:6px; font-weight:600;
+  background:color-mix(in oklab, var(--brand) 12%, var(--bg-soft));
+  border:1px solid color-mix(in oklab, var(--brand) 28%, transparent);
+  color:color-mix(in oklab, var(--brand) 80%, var(--text));
+}
+.edu-badge.grade{
+  background:color-mix(in oklab, var(--brand-2) 14%, var(--bg-soft));
+  border-color:color-mix(in oklab, var(--brand-2) 35%, transparent);
+  color:color-mix(in oklab, var(--brand-2) 85%, var(--text));
+}
+.edu-modules{
+  display:flex; flex-wrap:wrap; gap:5px; margin-top:8px;
+}
+.edu-module-tag{
+  font-size:.76rem; padding:2px 8px; border-radius:5px;
+  background:color-mix(in oklab, var(--card) 80%, transparent);
+  border:1px solid color-mix(in oklab, var(--text) 9%, transparent);
+  color:var(--muted);
+}
+.edu-highlights{
+  list-style:none; padding:0; margin:10px 0 0;
+}
+.edu-highlights li{
+  font-size:.82rem; color:var(--muted); padding:2px 0;
+  display:flex; align-items:flex-start; gap:7px;
+}
+.edu-highlights li::before{
+  content:''; width:5px; height:5px; border-radius:50%; flex-shrink:0; margin-top:5px;
+  background:linear-gradient(135deg, var(--brand), var(--brand-2));
+}
+
+/* Compact edu rows in hero sidebar */
+.edu-compact{
+  padding:8px 0;
+  border-top:1px solid color-mix(in oklab, var(--text) 10%, transparent);
+}
+.edu-compact-degree{ font-size:.82rem; font-weight:700; margin:0 0 1px; }
+.edu-compact-inst{ font-size:.76rem; color:var(--muted); margin:0; }
+.edu-compact-grade{
+  font-size:.7rem; margin-top:3px;
+  color:color-mix(in oklab, var(--brand-2) 85%, var(--text));
+  font-weight:600;
 }

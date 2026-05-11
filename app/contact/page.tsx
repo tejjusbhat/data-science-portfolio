@@ -1,7 +1,7 @@
 import ContactForm from "./ContactForm";
 
 export const metadata = {
-  title: "Contact — Tejjus Bhat",
+  title: 'Contact',
   description: "Get in touch with Tejjus Bhat.",
 };
 
