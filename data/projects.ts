@@ -85,14 +85,6 @@ export const projects: Project[] = [
     links: { repo: 'https://github.com/tejjusbhat/car_sales_prediction/blob/master/car_price_prediction.ipynb' }
   },
   {
-    slug: 'data-extractor-pipeline',
-    title: 'Data Extractor Pipeline',
-    summary: 'Freelance project that scrapes names and phone numbers from web pages, PDFs, and spreadsheets, then uploads them to Firebase for targeted marketing campaigns.',
-    stack: ['Regex', 'BeautifulSoup', 'Firebase'],
-    category: 'api',
-    links: {}
-  },
-  {
     slug: 'face-detection-streamlit',
     title: 'Face Detection App',
     summary: 'Web app that detects faces in uploaded images using an OpenCV DNN model, deployed on Streamlit.',

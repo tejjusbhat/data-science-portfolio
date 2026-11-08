@@ -5,14 +5,14 @@ export const research = {
       venue: 'The Grenze Journal',
       year: 2025,
       link: 'http://www.scopus.com/pages/publications/105034872615',
-      summary: 'It is a review of emotional awareness across different modes in AI namely, text, voice, video and multimodal inputs. The paper compiles the existing research in the field and also expands on how future research be carried out in this field. We also included results of a survey conducted by us that shows the publics opinion on AI and the inference from that survey.'
+      summary: 'A review of emotional awareness across different modes of AI: text, voice, video and multimodal inputs. The paper compiles existing research in the field, outlines how future research could be carried out, and presents the results of our own survey on public opinion of AI, along with the conclusions drawn from it.'
     },
     {
       title: 'inQuery – Online AI Application Formatting and Management System',
       venue: 'IEEE CCICT',
       year: 2024,
       link: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=_yU6XNgAAAAJ&citation_for_view=_yU6XNgAAAAJ:u-x6o8ySG0sC',
-      summary: 'The paper discusses the need for an application formatting and management system. It explores how such a system can be built and be useful for institutions.'
+      summary: 'Makes the case for an online application formatting and management system, and explores how such a system can be built and how it benefits institutions.'
     }
   ],
   patents: [

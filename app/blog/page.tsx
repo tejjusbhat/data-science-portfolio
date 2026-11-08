@@ -38,9 +38,6 @@ export default async function BlogPage() {
 
   return (
     <Section title="Chronicles" kicker="Blog">
-      {!username && (
-        <p className="lead">Set <code>MEDIUM_USERNAME</code> in your environment to auto-import posts.</p>
-      )}
       {items.length === 0 ? (
         <p className="lead">No chronicles yet. Check back soon.</p>
       ) : (

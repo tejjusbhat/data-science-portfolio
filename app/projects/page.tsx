@@ -29,9 +29,11 @@ export default function ProjectsPage() {
                     <p className="tl-org">{e.org}{e.location && <> · {e.location}</>}</p>
                   </div>
                 </div>
-                <ul className="tl-bullets">
-                  {e.bullets.map((b, i) => <li key={i}>{b}</li>)}
-                </ul>
+                {e.bullets.length > 0 && (
+                  <ul className="tl-bullets">
+                    {e.bullets.map((b, i) => <li key={i}>{b}</li>)}
+                  </ul>
+                )}
                 <div className="runes"><span className="rune">Unlocked: {e.unlock}</span></div>
               </Frame>
             </li>

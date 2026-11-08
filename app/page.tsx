@@ -17,7 +17,6 @@ const STATS = [
   { value: '2', label: 'Papers' },
   { value: '1', label: 'Patent' },
   { value: '5', label: 'Roles' },
-  { value: '0.97', label: 'Churn ROC AUC' },
 ];
 
 // Oldest first, so the path reads left to right like a level track
@@ -26,15 +25,13 @@ const LEVELS = [...experience].reverse();
 const FEATS = [
   'Won the NCL+ Award for extra-curricular excellence',
   'Helped Kare AI grow across 5 countries and 3,000+ zip codes, securing 2 major clients',
-  'Built a chatbot creation suite with real-time web search, raising answer accuracy by ~7%',
-  '0.97 ROC AUC on the SaaS churn predictor (XGBoost)',
-  '74+ public GitHub repos across ML, CV, NLP and backend',
+  'Published 2 peer-reviewed papers (IEEE CCICT 2024, The Grenze Journal 2025)',
+  'Filed a patent for the inQuery application management system',
 ];
 
 const ACADEMIES = [
   { degree: 'MSc Data Science & AI', inst: 'Newcastle University', note: '71% Distinction · 2025–2026' },
   { degree: 'BTech CSE (Data Science)', inst: 'ABES Engineering College, AKTU', note: '70.8% First Distinction · 2021–2025' },
-  { degree: 'High School Diploma, Science', inst: 'Delhi Public School, Ghaziabad Vasundhara', note: 'Graduated 2021' },
 ];
 
 export default function Home() {

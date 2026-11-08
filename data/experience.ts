@@ -25,9 +25,7 @@ export const experience: Experience[] = [
     location: 'Newcastle upon Tyne, UK',
     period: 'Oct 2026 – Present',
     current: true,
-    bullets: [
-      'Research and development in offshore wind energy.',
-    ],
+    bullets: [],
   },
   {
     role: 'Data Analyst Intern',

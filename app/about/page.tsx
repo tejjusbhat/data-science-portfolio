@@ -35,7 +35,7 @@ const EDUCATION = [
 const SKILLS: { group: string; sigil: SigilKind; tags: string[] }[] = [
   { group: 'Languages',          sigil: 'scroll', tags: ['Python', 'SQL', 'R', 'JavaScript'] },
   { group: 'ML / NLP',           sigil: 'ml',     tags: ['Machine Learning', 'Deep Learning', 'XGBoost', 'NLP', 'Sentiment Analysis', 'Computer Vision'] },
-  { group: 'Generative AI',      sigil: 'llm',    tags: ['RAG Pipelines', 'LangChain', 'Prompt Engineering', 'LLM Fine-Tuning', 'Web Search Agents', 'OpenAI'] },
+  { group: 'Generative AI',      sigil: 'llm',    tags: ['RAG Pipelines', 'LangChain', 'Prompt Engineering', 'LLM Fine-Tuning', 'OpenAI', 'Groq'] },
   { group: 'Full-Stack',         sigil: 'api',    tags: ['FastAPI', 'Flask', 'Node.js', 'REST APIs', 'React', 'Next.js'] },
   { group: 'Data & Cloud',       sigil: 'eda',    tags: ['Power BI', 'SQL Database Administration', 'Azure DevOps Services', 'Google Cloud', 'Docker', 'Git'] },
   { group: 'Research & Strategy',sigil: 'relic',  tags: ['Market Research', 'Startups', 'Web Scraping', 'Stakeholder Presentations'] },
