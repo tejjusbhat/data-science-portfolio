@@ -1,7 +1,7 @@
 export const profile = {
   name: 'Tejjus Bhat',
-  tagline: 'MSc Data Science and AI student at Newcastle University, building ML systems that solve real problems.',
-  bio: `I'm an MSc Data Science and AI student at Newcastle University with internship and research experience across data analysis, ML systems, and software development. I currently work as a Data Analyst Intern at the Philip Robinson Library, analysing occupancy data using SQL and Python and redesigning Power BI dashboards. I built a RAG-based medical chatbot at Kare AI using OpenAI GPT-4 and LangChain, and conducted market research at I-lab to form a go-to-market strategy for the Higher Education sector. I also worked with DRDO/INMAS on VR-driven training scenarios using eye tracking. My projects span computer vision (OCR/YOLO), LLM applications, and applied ML for fintech.`,
+  tagline: 'R&D Engineer at Kinewell in offshore wind energy. I harness Python and machine learning to turn data into actionable insights, and build full-stack AI software.',
+  bio: `Harnessing Python and machine learning to turn data into actionable insights is my forte. I build full-stack, AI-based software, and I'm currently a Research & Development Engineer at Kinewell, working in offshore wind energy. Previously I was a Data Analyst Intern at Newcastle University, a Market Research Intern at Newcastle University Business School, a Research Intern at INMAS (DRDO), and an Associate Research Intern at Kare AI, where I built RAG and web-scraping pipelines. I hold an MSc in Data Science and AI from Newcastle University.`,
   links: {
     github: 'https://github.com/tejjusbhat',
     linkedin: 'https://linkedin.com/in/tejjusbhat',

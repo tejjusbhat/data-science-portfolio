@@ -1,5 +1,6 @@
 import Section from '@/components/Section';
 import Parser from 'rss-parser';
+import { Frame, Sigil } from '@/components/Ornaments';
 
 export const metadata = { title: 'Blog' };
 
@@ -35,45 +36,38 @@ export default async function BlogPage() {
   }
 
   return (
-    <Section title="Blog">
+    <Section title="Chronicles" kicker="Blog">
       {!username && (
         <p className="lead">Set <code>MEDIUM_USERNAME</code> in your environment to auto-import posts.</p>
       )}
       {items.length === 0 ? (
-        <p className="lead">No posts yet. Check back soon.</p>
+        <p className="lead">No chronicles yet. Check back soon.</p>
       ) : (
-        <ul style={{listStyle:'none', padding:0, margin:0}}>
+        <ul className="tome-list">
           {items.map((it, i) => (
-            <li key={i} className="card" style={{marginBottom:12}}>
-              <strong>{it.title}</strong>
-              {it.isoDate && (
-                <div style={{marginTop:4}}>
-                  <span className="helper">
+            <Frame as="li" key={i} className="tome">
+              <span className="tome-seal"><Sigil kind="scroll" size={56} /></span>
+              <div>
+                {it.isoDate && (
+                  <p className="tome-meta">
                     {new Date(it.isoDate).toLocaleDateString('en-GB', {
                       day: 'numeric', month: 'short', year: 'numeric',
                     })}
-                  </span>
-                </div>
-              )}
-              {it.contentSnippet && (
-                <p style={{marginTop:8, marginBottom:0}}>
-                  {it.contentSnippet.slice(0, 180)}{it.contentSnippet.length > 180 ? '…' : ''}
-                </p>
-              )}
-              {it.link && (
-                <div style={{marginTop:10}}>
-                  <a
-                    className="nav-link"
-                    style={{display:'inline-flex'}}
-                    href={it.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  </p>
+                )}
+                <h3 className="tome-title">{it.title}</h3>
+                {it.contentSnippet && (
+                  <p className="tome-body">
+                    {it.contentSnippet.slice(0, 180)}{it.contentSnippet.length > 180 ? '…' : ''}
+                  </p>
+                )}
+                {it.link && (
+                  <a className="btn btn-sm" href={it.link} target="_blank" rel="noopener noreferrer">
                     Read on Medium
                   </a>
-                </div>
-              )}
-            </li>
+                )}
+              </div>
+            </Frame>
           ))}
         </ul>
       )}

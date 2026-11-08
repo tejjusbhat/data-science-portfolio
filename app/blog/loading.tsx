@@ -1,16 +1,18 @@
+import Section from '@/components/Section';
+import { Frame } from '@/components/Ornaments';
+
 export default function Loading() {
   return (
-    <section>
-      <h2>Blog</h2>
-      <ul style={{listStyle:'none', padding:0, margin:0}}>
-        {Array.from({ length: 6 }).map((_, i) => (
-          <li key={i} className="card skeleton">
+    <Section title="Chronicles" kicker="Blog">
+      <ul className="tome-list">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <Frame as="li" key={i}>
             <div className="skeleton-line skeleton-title" />
             <div className="skeleton-line" />
             <div className="skeleton-line" style={{width:'65%'}} />
-          </li>
+          </Frame>
         ))}
       </ul>
-    </section>
+    </Section>
   );
 }

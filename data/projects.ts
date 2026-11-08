@@ -21,7 +21,7 @@ export const projects: Project[] = [
   {
     slug: 'saas-churn-predictor',
     title: 'SaaS Customer Churn Predictor',
-    summary: 'End-to-end churn prediction pipeline with 97% accuracy using XGBoost and SHAP-based explanations, plus an interactive ROI simulator estimating up to $3M in retention savings for 100k users.',
+    summary: 'End-to-end churn prediction pipeline trained on SaaS-specific simulated data, reaching a ROC AUC of 0.97 with XGBoost and SHAP-based explanations, plus an interactive ROI simulator estimating up to $3M in retention savings for 100k users.',
     stack: ['Python', 'Machine Learning', 'XGBoost', 'SHAP', 'Streamlit'],
     featured: true,
     category: 'ml',

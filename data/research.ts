@@ -1,7 +1,7 @@
 export const research = {
   papers: [
     {
-      title: 'Review of Emotion Awareness in Different Modes of AI',
+      title: 'Review of Emotion-Awareness in Different Modes in AI',
       venue: 'The Grenze Journal',
       year: 2025,
       link: 'http://www.scopus.com/pages/publications/105034872615',
@@ -17,28 +17,18 @@ export const research = {
   ],
   patents: [
     {
-      title: 'Application Management System',
+      title: 'inQuery – Online AI Application Formatting and Management System',
       number: '202311074346',
       summary:
         'A patent for an all-round framework for application management and formatting for large institutions.',
     },
   ],
 
+  // As listed on LinkedIn
   certificates: [
-    {
-      title: 'Machine Learning Specialization',
-      issuer: 'Coursera / Stanford University',
-      year: 2023,
-    },
-    {
-      title: 'Applied Data Science with Python',
-      issuer: 'University of Michigan',
-      year: 2022,
-    },
-    {
-      title: 'Deep Learning Nanodegree',
-      issuer: 'Udacity',
-      year: 2021,
-    },
+    { title: 'Python Certified Associate Practitioner' },
+    { title: 'Mastering OpenCV with Python (Honors Certificate)' },
+    { title: 'Complete Web Development Bootcamp' },
+    { title: 'Enterprising Futures: Innovation Lab' },
   ],
 };

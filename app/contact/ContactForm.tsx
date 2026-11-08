@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Section from "@/components/Section";
+import { Frame } from "@/components/Ornaments";
 
 export default function ContactForm() {
   const [ok, setOk] = useState<string | null>(null);
@@ -22,7 +24,7 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", { method: "POST", body: fd });
       const j = await res.json();
       if (!res.ok) throw new Error(j.error || "Failed");
-      setOk("Thanks! I’ll get back to you soon.");
+      setOk("Your raven has flown. I’ll reply soon.");
       (e.target as HTMLFormElement).reset();
     } catch (ex: unknown) {
       setErr(ex instanceof Error ? ex.message : "Something went wrong");
@@ -32,34 +34,19 @@ export default function ContactForm() {
   }
 
   return (
-    <div style={{ maxWidth: 780, margin: "0 auto" }}>
-      <h1 style={{ textAlign: "center" }}>Contact</h1>
-      <form
-        onSubmit={onSubmit}
-        className="card"
-        style={{ maxWidth: 640, margin: "16px auto" }}
-      >
+    <Section title="Send a Raven" kicker="Contact">
+      <Frame as="form" className="raven" onSubmit={onSubmit}>
         <div className="form-field">
-          <label>Name</label>
-          <input name="name" required placeholder="Your name" />
+          <label htmlFor="name">Name</label>
+          <input id="name" name="name" required placeholder="Your name" />
         </div>
         <div className="form-field">
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="you@example.com"
-          />
+          <label htmlFor="email">Email</label>
+          <input id="email" type="email" name="email" required placeholder="you@example.com" />
         </div>
         <div className="form-field">
-          <label>Message</label>
-          <textarea
-            name="message"
-            required
-            rows={6}
-            placeholder="How can I help?"
-          />
+          <label htmlFor="message">Message</label>
+          <textarea id="message" name="message" required rows={6} placeholder="What quest do you bring?" />
         </div>
         {/* optional honeypot */}
         <input
@@ -69,34 +56,17 @@ export default function ContactForm() {
           aria-hidden="true"
           style={{ position: "absolute", left: "-5000px", opacity: 0 }}
         />
-        <div
-          style={{
-            display: "flex",
-            gap: 12,
-            marginTop: 12,
-            alignItems: "center",
-            flexWrap: "wrap",
-          }}
-        >
-          <button className="cta" disabled={submitting}>
-            {submitting ? "Sending…" : "Send"}
+        <div className="form-actions">
+          <button className="btn btn-primary" disabled={submitting}>
+            {submitting ? "Dispatching…" : "Dispatch raven"}
           </button>
           <small className="helper">
-            Or email:{" "}
-            <a href="mailto:tejjusbhat@gmail.com">tejjusbhat@gmail.com</a>
+            Or email: <a href="mailto:tejjusbhat@gmail.com">tejjusbhat@gmail.com</a>
           </small>
         </div>
-        {ok && (
-          <p role="status" style={{ marginTop: 12 }}>
-            {ok}
-          </p>
-        )}
-        {err && (
-          <p role="alert" style={{ marginTop: 12 }}>
-            {err}
-          </p>
-        )}
-      </form>
-    </div>
+        {ok && <p role="status" className="form-msg ok">{ok}</p>}
+        {err && <p role="alert" className="form-msg err">{err}</p>}
+      </Frame>
+    </Section>
   );
 }

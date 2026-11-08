@@ -19,10 +19,11 @@ export default function Footer(){
   const p = profile;
   return (
     <footer>
+      <div className="footer-rule" aria-hidden />
       <div className="container footer-wrap">
         <div className="footer-left">
           <small>© {new Date().getFullYear()} {p.name}</small>
-          <small className="helper">Built with Next.js</small>
+          <small className="helper">Press <kbd>Q</kbd> / <kbd>E</kbd> to switch tabs</small>
         </div>
         <div className="icon-row">
           {p.links.github   && <IconLink href={p.links.github}   label="GitHub"><GitHub /></IconLink>}

@@ -3,136 +3,149 @@ import Image from 'next/image';
 import Section from '@/components/Section';
 import ProjectCard from '@/components/ProjectCard';
 import FadeIn from '@/components/FadeIn';
+import SafeLink from '@/components/SafeLink';
+import { Frame, RingFrame, Sparkle } from '@/components/Ornaments';
 import { profile } from '@/data/profile';
 import { projects } from '@/data/projects';
-import SafeLink from '@/components/SafeLink';
+import { experience } from '@/data/experience';
+
+const CV_URL = 'https://drive.google.com/file/d/1jFPUKQqGeqHnNjqmmhZu1CcPKUAkYIem/view?usp=drive_link';
 
 const STATS = [
-  { label: 'MSc Data Science & AI' },
-  { label: '4 Roles' },
-  { label: '2 Publications' },
+  { value: '74+', label: 'Repos' },
+  { value: '2', label: 'Papers' },
+  { value: '1', label: 'Patent' },
+  { value: '5', label: 'Roles' },
+  { value: '0.97', label: 'Churn ROC AUC' },
 ];
 
-const EXPERIENCE = [
-  { role: 'Data Analyst Intern', org: 'Philip Robinson Library, Newcastle University', period: 'Jan 2026 – Present' },
-  { role: 'Market Research Intern', org: 'I-lab, Newcastle University', period: 'Jan 2026 – Mar 2026' },
-  { role: 'Data Science Intern', org: 'Kare AI', period: 'Feb 2024 – Jun 2024' },
-  { role: 'Research', org: 'DRDO / INMAS', period: '2023 – 2024' },
-];
+// Oldest first, so the path reads left to right like a level track
+const LEVELS = [...experience].reverse();
 
-const ACHIEVEMENTS = [
+const FEATS = [
+  'Won the NCL+ Award for extra-curricular excellence',
+  'Helped Kare AI grow across 5 countries and 3,000+ zip codes, securing 2 major clients',
+  'Built a chatbot creation suite with real-time web search, raising answer accuracy by ~7%',
+  '0.97 ROC AUC on the SaaS churn predictor (XGBoost)',
   '74+ public GitHub repos across ML, CV, NLP and backend',
-  'Won NCL+ Award for extra-curricular excellence',
-  '97% accuracy (SaaS churn predictor)',
-  '6 stars on GitHub (captcha solver)',
+];
+
+const ACADEMIES = [
+  { degree: 'MSc Data Science & AI', inst: 'Newcastle University', note: '71% Distinction · 2025–2026' },
+  { degree: 'BTech CSE (Data Science)', inst: 'ABES Engineering College, AKTU', note: '70.8% First Distinction · 2021–2025' },
+  { degree: 'High School Diploma, Science', inst: 'Delhi Public School, Ghaziabad Vasundhara', note: 'Graduated 2021' },
 ];
 
 export default function Home() {
-  const featured = projects.filter(p => p.featured).slice(0, 2);
+  const featured = projects.filter(p => p.featured);
 
   return (
     <>
-      <Section>
-        <div className="hero-wrap">
-          <div className="hero-dot-bg" aria-hidden />
-
-          {/* Left: intro */}
-          <div style={{position:'relative', zIndex:1}}>
-            <div className="badges" aria-hidden>
-              <span className="badge">Data Science • ML • LLMs</span>
-              <span className="badge-solid available-badge">
-                <span className="pulse-dot" aria-hidden />
-                Open to opportunities
-              </span>
+      <section className="hero">
+        <div className="portrait-col">
+          <Frame className="portrait-frame">
+            <div className="portrait">
+              <Image src="/tejjus.jpg" alt="Tejjus Bhat" width={600} height={720} priority />
             </div>
-
-            <h1 style={{marginTop:12}}>
-              <span className="gradient-text">Hi! I&apos;m {profile.name}</span>
-              {' '}<span className="wave" aria-hidden>👋</span>
-            </h1>
-            <p className="lead" style={{marginBottom:0}}>{profile.tagline}</p>
-
-            <div className="stat-chips">
-              {STATS.map(s => (
-                <span key={s.label} className="stat-chip">{s.label}</span>
-              ))}
-            </div>
-
-            <div style={{display:'flex', gap:12, flexWrap:'wrap'}}>
-              <Link className="cta-primary" href="/contact">Contact</Link>
-              <Link className="nav-link" href="/projects">See Projects</Link>
-              <Link className="nav-link" href="/research">Papers & Patents</Link>
-            </div>
-          </div>
-
-          {/* Right: photo + achievements */}
-          <aside className="card meta-card" style={{position:'relative', zIndex:1}}>
-            <div style={{display:'grid', placeItems:'center', marginBottom:12}}>
-              <div className="avatar">
-                <Image src="/tejjus.jpg" alt="Tejjus Bhat" width={600} height={720} />
-                <div className="avatar-ring" />
-              </div>
-            </div>
-
-            <div className="row">
-              <span className="meta-key">Location</span>
-              <span>Newcastle, UK</span>
-            </div>
-            <div className="row">
-              <span className="meta-key">Focus</span>
-              <span>Data Science • ML • LLMs</span>
-            </div>
-
-            <hr className="hr-soft" style={{margin:'10px 0 6px'}} />
-            {ACHIEVEMENTS.map(a => (
-              <div key={a} className="achievement">{a}</div>
-            ))}
-
-            <hr className="hr-soft" style={{margin:'10px 0 6px'}} />
-            <div className="edu-compact">
-              <p className="edu-compact-degree">MSc Data Science & AI</p>
-              <p className="edu-compact-inst">Newcastle University</p>
-              <p className="edu-compact-grade">Expected: 78% · 2025–2026</p>
-            </div>
-            <div className="edu-compact">
-              <p className="edu-compact-degree">BTech CSE (Data Science)</p>
-              <p className="edu-compact-inst">ABES Engineering College, AKTU</p>
-              <p className="edu-compact-grade">70.8% First Distinction · 2021–2025</p>
-            </div>
-
-            <div className="btn-row" style={{marginTop:14}}>
-              <SafeLink href="https://drive.google.com/file/d/1jFPUKQqGeqHnNjqmmhZu1CcPKUAkYIem/view?usp=drive_link">
-                <span className="nav-link">View CV</span>
-              </SafeLink>
-            </div>
-          </aside>
+          </Frame>
+          <div className="nameplate">R&amp;D Engineer</div>
         </div>
-      </Section>
 
-      <Section title="Experience">
-        <FadeIn>
-          <div className="exp-strip">
-            {EXPERIENCE.map(e => (
-              <div className="exp-card" key={e.org}>
-                <p className="exp-role">{e.role}</p>
-                <p className="exp-org">{e.org}</p>
-                <p className="exp-date">{e.period}</p>
-              </div>
+        <div className="sheet">
+          <p className="kicker"><Sparkle /> Character <Sparkle /></p>
+          <h1 className="hero-name">{profile.name}</h1>
+          <dl className="hero-class">
+            <div><dt>Class</dt><dd>R&amp;D Engineer</dd></div>
+            <div><dt>Guild</dt><dd>Kinewell · Offshore Wind</dd></div>
+            <div><dt>Specialty</dt><dd>Python · ML · Full-stack AI</dd></div>
+            <div><dt>Realm</dt><dd>Newcastle, UK</dd></div>
+          </dl>
+          <p className="hero-tagline">{profile.tagline}</p>
+          <p className="status"><span className="ember" aria-hidden /> Open to collaborations</p>
+
+          <ul className="medallions" aria-label="Stats">
+            {STATS.map(s => (
+              <li key={s.label} className="medallion">
+                <span className="medallion-ring"><RingFrame /><span className="medallion-value">{s.value}</span></span>
+                <span className="medallion-label">{s.label}</span>
+              </li>
             ))}
+          </ul>
+
+          <div className="btn-row">
+            <Link className="btn btn-primary" href="/contact">Send a Raven</Link>
+            <Link className="btn" href="/projects">Quest Log</Link>
+            <SafeLink href={CV_URL}><span className="btn">View CV</span></SafeLink>
           </div>
+        </div>
+      </section>
+
+      <Section title="Path of Levels" kicker="Experience">
+        <FadeIn>
+          <ol className="levels">
+            {LEVELS.map((l, i) => (
+              <li key={l.org} className={`banner${l.current ? ' current' : ''}`}>
+                <div className="banner-shape"><div className="banner-inner">
+                  <p className="banner-level">Level</p>
+                  <p className="banner-num">
+                    {l.current && <span className="num-gem" aria-hidden />}
+                    {i + 1}
+                    {l.current && <span className="num-gem" aria-hidden />}
+                  </p>
+                  <p className="banner-status">{l.current ? 'Active' : 'Complete'}</p>
+                  {l.current && <div className="xp-bar" aria-hidden><span /></div>}
+                  <p className="banner-role">{l.short.role}</p>
+                  <p className="banner-org">{l.short.org}</p>
+                  <p className="banner-period">{l.short.period}</p>
+                  <p className="banner-unlock"><span>Unlocked</span>{l.unlock}</p>
+                </div></div>
+              </li>
+            ))}
+            <li className="banner locked">
+              <Link href="/contact" className="banner-shape"><div className="banner-inner">
+                <p className="banner-level">Level</p>
+                <p className="banner-num">{LEVELS.length + 1}</p>
+                <p className="banner-status">Locked</p>
+                <p className="banner-role">Your project?</p>
+                <p className="banner-org">Have something worth building together?</p>
+                <p className="banner-unlock"><span>Unlock</span>Send a raven</p>
+              </div></Link>
+            </li>
+          </ol>
         </FadeIn>
       </Section>
 
-      <Section title="Featured work">
+      <Section title="Feats & Academies" kicker="Achievements and education">
         <FadeIn>
           <div className="grid grid-2">
-            {featured.map(p => (
-              <ProjectCard key={p.slug} project={p} featured />
-            ))}
+            <Frame className="panel">
+              <h3 className="panel-title">Feats</h3>
+              <ul className="feat-list">
+                {FEATS.map(f => <li key={f}><Sparkle size={11} className="feat-star" />{f}</li>)}
+              </ul>
+            </Frame>
+            <Frame className="panel">
+              <h3 className="panel-title">Academies</h3>
+              {ACADEMIES.map(a => (
+                <div key={a.degree} className="academy">
+                  <p className="academy-degree">{a.degree}</p>
+                  <p className="academy-inst">{a.inst}</p>
+                  <p className="academy-note">{a.note}</p>
+                </div>
+              ))}
+            </Frame>
           </div>
         </FadeIn>
-        <div style={{marginTop:16}}>
-          <Link className="nav-link" href="/projects">View all projects</Link>
+      </Section>
+
+      <Section title="Side Quests" kicker="Featured projects">
+        <FadeIn>
+          <div className="grid grid-3">
+            {featured.map(p => <ProjectCard key={p.slug} project={p} featured />)}
+          </div>
+        </FadeIn>
+        <div className="center-row">
+          <Link className="btn" href="/projects">Open the full Quest Log</Link>
         </div>
       </Section>
     </>
@@ -140,6 +153,6 @@ export default function Home() {
 }
 
 export const metadata = {
-  title: 'Tejjus Bhat | Data Scientist',
-  description: 'Portfolio of Tejjus Bhat, MSc Data Science and AI student at Newcastle University with experience in ML, LLM applications, and data analytics.',
+  title: 'Tejjus Bhat | R&D Engineer & Data Scientist',
+  description: 'Portfolio of Tejjus Bhat, R&D Engineer at Kinewell and Newcastle University MSc Data Science & AI graduate building full-stack AI software.',
 };
