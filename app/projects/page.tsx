@@ -1,10 +1,11 @@
 import Section from '@/components/Section';
+import { pageMetadata } from '@/lib/seo';
 import ProjectCard from '@/components/ProjectCard';
 import { Frame, Sigil } from '@/components/Ornaments';
 import { experience } from '@/data/experience';
 import { projects } from '@/data/projects';
 
-export const metadata = { title: 'Work & Projects' };
+export const metadata = pageMetadata({ title: 'Work & Projects', description: 'Main quests and side quests: Tejjus Bhat’s work at Kinewell, Newcastle University, DRDO and Kare AI, plus machine learning, LLM and computer vision projects.', path: '/projects' });
 
 export default function ProjectsPage() {
   const highlighted = projects.filter(p => p.featured);

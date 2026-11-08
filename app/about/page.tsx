@@ -1,10 +1,11 @@
 import Image from 'next/image';
+import { pageMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import Section from '@/components/Section';
 import SafeLink from '@/components/SafeLink';
 import { Frame, Sigil, Sparkle, type SigilKind } from '@/components/Ornaments';
 
-export const metadata = { title: 'About' };
+export const metadata = pageMetadata({ title: 'About', description: 'The lore of Tejjus Bhat: background, skill tree and education, including an MSc in Data Science & AI with Distinction from Newcastle University.', path: '/about' });
 
 const EDUCATION = [
   {

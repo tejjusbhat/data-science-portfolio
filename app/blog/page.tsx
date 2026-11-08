@@ -1,8 +1,9 @@
 import Section from '@/components/Section';
+import { pageMetadata } from '@/lib/seo';
 import Parser from 'rss-parser';
 import { Frame, Sigil } from '@/components/Ornaments';
 
-export const metadata = { title: 'Blog' };
+export const metadata = pageMetadata({ title: 'Blog', description: 'Chronicles: articles by Tejjus Bhat on data science, machine learning and AI.', path: '/blog' });
 
 export const revalidate = 1800;
 

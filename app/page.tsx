@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { DEFAULT_DESCRIPTION, pageMetadata, personJsonLd } from '@/lib/seo';
 import Image from 'next/image';
 import Section from '@/components/Section';
 import ProjectCard from '@/components/ProjectCard';
@@ -41,6 +42,7 @@ export default function Home() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
       <section className="hero">
         <div className="portrait-col">
           <Frame className="portrait-frame">
@@ -152,7 +154,4 @@ export default function Home() {
   );
 }
 
-export const metadata = {
-  title: 'Tejjus Bhat | R&D Engineer & Data Scientist',
-  description: 'Portfolio of Tejjus Bhat, R&D Engineer at Kinewell and Newcastle University MSc Data Science & AI graduate building full-stack AI software.',
-};
+export const metadata = pageMetadata({ description: DEFAULT_DESCRIPTION, path: '/' });

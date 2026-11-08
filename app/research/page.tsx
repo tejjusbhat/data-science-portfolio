@@ -1,9 +1,10 @@
 import Section from '@/components/Section';
+import { pageMetadata } from '@/lib/seo';
 import SafeLink from '@/components/SafeLink';
 import { Frame, RingFrame, Sigil } from '@/components/Ornaments';
 import { research } from '@/data/research';
 
-export const metadata = { title: 'Research' };
+export const metadata = pageMetadata({ title: 'Research', description: 'Published papers, a patent and certifications by Tejjus Bhat, including research on emotion-aware AI and the inQuery application management system.', path: '/research' });
 
 export default function ResearchPage() {
   return (
